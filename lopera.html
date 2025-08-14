@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L’Opéra Day 1 🥐🍰☕</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    color: #4a2c2a;
+    background: url('elephant.png') repeat, #dbb611;
+    background-size: 200px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .overlay {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    color: #d411d7;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+    z-index: 2;
+  }
+
+  .content-box {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+    max-width: 700px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #cb0f0f;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+  }
+
+  /* Carousel styles */
+  .carousel {
+    position: relative;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center; /* center the images */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .carousel img {
+    width: 50%;       /* scale images to 50% */
+    display: none;
+    transition: opacity 1s ease-in-out;
+    }
+
+    .carousel img.active {
+    display: block;
+    }
+
+
+  /* Lantern animation */
+  .lantern {
+    position: absolute;
+    bottom: -100px;
+    animation: floatLantern linear forwards;
+    z-index: 0;
+    will-change: transform, opacity;
+  }
+
+  @keyframes floatLantern {
+    0%   { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="lantern-container"></div>
+
+<div class="overlay">
+  <h1 class="page-title">L’Opéra Day 1 🥐🍰☕</h1>
+
+  <div class="content-box">
+    <!-- Carousel container -->
+    <div class="carousel">
+      <img src="lopera1.HEIC" class="active" alt="Dessert 1">
+      <img src="lopera2.HEIC" alt="Dessert 2">
+      <img src="lopera3.HEIC" alt="Dessert 3">
+      <img src="lopera4.HEIC" alt="Dessert 4">
+      <img src="lopera5.HEIC" alt="Dessert 5">
+    </div>
+
+    <p>This was your reaction when I surprised you with dessert on date(?) 1, and now that I've asked the MAIN question, I hope this is exactly the expression I'm seeing while you read this</p>
+  </div>
+</div>
+
+<script>
+  /* Lantern floating */
+  const lanternContainer = document.getElementById('lantern-container');
+  function createLantern() {
+    const lantern = document.createElement('div');
+    lantern.textContent = '🥐';
+    lantern.classList.add('lantern');
+    lantern.style.left = Math.random() * 100 + 'vw';
+    lantern.style.fontSize = (30 + Math.random() * 20) + 'px';
+    lantern.style.animationDuration = (10 + Math.random() * 8) + 's';
+    lanternContainer.appendChild(lantern);
+    setTimeout(() => lantern.remove(), 18000);
+  }
+  setInterval(createLantern, 1000);
+
+  /* Carousel logic */
+  const images = document.querySelectorAll('.carousel img');
+  let currentIndex = 0;
+  setInterval(() => {
+    images[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add('active');
+  }, 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+img {
+    max-width: 80%;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.buttons a {
+    display: inline-flex;
+    align-items: center;
+    background: #ff99b3;
+    color: white;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden; /* ensures hidden text stays hidden */
+}
+
+.buttons a:hover {
+    background: #ff7a96;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+}
+
+.buttons .name {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.buttons a:hover .name {
+    opacity: 1;
+    width: auto;
+    margin-left: 8px;
+}

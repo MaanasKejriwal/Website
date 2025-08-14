@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mamagoto Day 1 🥢🍯🍗</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;600&display=swap');
+
+    body {
+        margin: 0;
+        font-family: 'Nunito', sans-serif;
+        color: #4a2c2a;
+        background: url('block_print_green_on_yellow.png') repeat;
+        background-size: 200px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+    .overlay {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Title outside the box */
+    .page-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        color: #c50063;
+        text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+        z-index: 2;
+    }
+
+    /* Soft white box for readability */
+    .content-box {
+        background: rgba(255, 255, 255, 0.6);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        backdrop-filter: blur(5px);
+        max-width: 700px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #7a4b00;
+        text-shadow: 1px 1px 3px rgba(255,255,255,0.6);
+    }
+
+    .food-image {
+        width: 300px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        margin-bottom: 20px;
+    }
+
+    /* Lantern styles */
+    .lantern {
+        position: absolute;
+        bottom: -100px;
+        animation: floatLantern linear forwards;
+        z-index: 0;
+        will-change: transform, opacity;
+    }
+
+    @keyframes floatLantern {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-110vh); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div id="lantern-container"></div>
+
+<div class="overlay">
+    <h1 class="page-title">Mamagoto Day 1 🥢🍯🍗</h1>
+    <div class="content-box">
+        <img src="mamagoto.HEIC" alt="Mamagoto Dish" class="food-image">
+        <p>First stop had to be Mamagoto - I can't believe honey chicken was a childhood favourite for both of us. The first time we went to Mamagoto together I made us hop between restaurants, and I thought what better way than to do the same today <3</p>
+        <p><h5>P.S. We didn't take any pics at Mamagoto but this was the same day (and my favourite picture of you)</h5></p>
+    </div>
+</div>
+
+<script>
+    const lanternContainer = document.getElementById('lantern-container');
+
+    function createLantern() {
+        const lantern = document.createElement('div');
+        lantern.textContent = '🏮'; // Lantern emoji
+        lantern.classList.add('lantern');
+        lantern.style.left = Math.random() * 100 + 'vw';
+        lantern.style.fontSize = (30 + Math.random() * 20) + 'px';
+        lantern.style.animationDuration = (8 + Math.random() * 5) + 's';
+        lanternContainer.appendChild(lantern);
+
+        setTimeout(() => lantern.remove(), 15000);
+    }
+
+    setInterval(createLantern, 1000);
+</script>
+
+</body>
+</html>

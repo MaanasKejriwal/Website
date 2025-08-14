@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Will You Be My Girlfriend?</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: white;
+            background-image: url('ring.png'); /* Your ring image here */
+            background-repeat: repeat;
+            background-size: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #3bbbf6;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Yes Button */
+        #yesBtn {
+            background: linear-gradient(45deg, #ff69b4, #ff85c1);
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.6);
+        }
+
+        /* No Button */
+        #noBtn {
+            background: linear-gradient(45deg, #bbbbbb, #dddddd);
+            color: black;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        #noBtn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function launchConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById("noBtn");
+            noBtn.style.position = "absolute";
+            noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+            noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+        }
+
+        // Make "No" button jump on mobile tap too
+        document.addEventListener("DOMContentLoaded", () => {
+            const noBtn = document.getElementById("noBtn");
+            noBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                moveNoButton();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my girlfriend?</h1>
+        <button id="yesBtn" onclick="launchConfetti()">Yes 💖</button>
+        <button id="noBtn" onmouseover="moveNoButton()">No 😢</button>
+    </div>
+</body>
+</html>
